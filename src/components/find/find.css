@@ -1,0 +1,11 @@
+.gamesuqare{
+  height:100%;
+  position: relative;
+}
+.gamectn{
+  float: left;
+  position: absolute;
+  left: 200px;
+  right: 0;
+  height: 100%;
+}
