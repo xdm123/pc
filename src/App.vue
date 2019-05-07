@@ -56,21 +56,17 @@
           </div>
         </div>
       </el-header>
-      <el-container style="height:100%;">
+      <el-container style="height:100%; position:relative;">
         <el-aside width="136px" style="height:100%;">
           <Nav :active='active'></Nav> 
         </el-aside>
-        <el-main style="padding:0;">
+        <el-main style="padding:0; position:relative;">
           <router-view></router-view>
         </el-main>
       </el-container>
     </el-container>
     <div id="allmap" ref="allmap" style="width: 100%;height: 500px;display:none;"></div>
-
-
-
-
-      <div v-if='showMsgbox'>{{text}}</div>
+    <div v-if='showMsgbox'>{{text}}</div>
   </div>
 
 
