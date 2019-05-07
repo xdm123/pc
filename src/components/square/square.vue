@@ -1,5 +1,13 @@
 <template>
   <div class='square_wrap'>
+    <ul>
+      <li v-for="(item , index) in feeldata" :key='index'>
+        <p>{{item.id}}</p>
+        <p>{{item.name}}</p>
+        <p>{{item.feeltext}}</p>
+        <p>{{item.posttime}}</p>
+      </li>
+    </ul>
     <el-button 
     @click='editinner'
     v-if="islogin"
@@ -37,7 +45,8 @@ export default {
     return {
       postboxshow:false, //打开内容输入卡片
       postinner:'', //输入框内容
-      fullscreenLoading:false
+      fullscreenLoading:false,
+      feeldata:''
     }
   },
   computed:{
@@ -130,11 +139,19 @@ export default {
       
     },
     getpostlist:function(){
-      console.log('hahah')
+      this.$http.get('http://www.num12138.top:3000/getfeel')
+      .then((data) => {
+        console.log(data)
+        this.feeldata = data.data.list.reverse()
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     }
   },
   mounted(){
     this.changeWebTitle('心情广场');
+    this.getpostlist()
   }
 }
 </script>
@@ -145,6 +162,11 @@ export default {
     height: 100%;
     position: relative;
     overflow: hidden;
+    li{
+      width: 400px;
+      border:1px solid red;
+      margin:20px auto;
+    }
   }
   .postfeel{
     width: 100px;
@@ -159,6 +181,11 @@ export default {
     height:auto;
     margin:0 auto;
     margin-top:100px;
+    position: absolute;
+    top: 0;
+    left:50%;
+    margin-left:-200px;
+    background:skyblue;
   }
   .inputarea textarea{
     resize: none;
