@@ -40,7 +40,7 @@
 
 <script type="text/ecmascript-6">
 import {mapGetters} from "vuex"
-import { setTimeout } from 'timers';
+import {setTimeout} from 'timers';
 import {mapMutations} from 'vuex'
 export default {
   data () {
