@@ -2,10 +2,14 @@
   <div class='square_wrap'>
     <ul>
       <li v-for="(item , index) in feeldata" :key='index'>
-        <p>{{item.id}}</p>
-        <p>{{item.name}}</p>
-        <p>{{item.feeltext}}</p>
-        <p>{{item.posttime}}</p>
+        <el-card class="box-card">
+          <p class='list_head'>
+            <img :src="item.headimg" alt="">
+            <span>{{item.name}}</span>
+          </p>
+          <p class='item_inner'>{{item.feeltext}}</p>
+          <p class='item_time'>{{item.posttime}}</p>
+        </el-card>
       </li>
     </ul>
     <el-button 
@@ -161,10 +165,9 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
     li{
-      width: 400px;
-      border:1px solid red;
+      width: 70%;
       margin:20px auto;
     }
   }
@@ -181,10 +184,10 @@ export default {
     height:auto;
     margin:0 auto;
     margin-top:100px;
-    position: absolute;
+    position: fixed;
     top: 0;
     left:50%;
-    margin-left:-200px;
+    margin-left:-142px;
     background:skyblue;
   }
   .inputarea textarea{
@@ -195,5 +198,24 @@ export default {
     display: flex;
     justify-content: space-around;
     margin-top:20px;
+  }
+  .list_head{
+    width:100%;
+    height:70px;
+    line-height: 70px;
+    img{
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      float:left;
+      margin-right:20px;
+    }
+  }
+  .item_inner{
+    padding:20px 0;
+  }
+  .item_time{
+    width: 100%;
+    text-align: right;
   }
 </style>
