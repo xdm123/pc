@@ -46,8 +46,6 @@ export default {
       this.activeIndex = '1'
     },
     exitlogin:function(){
-
-
       this.$confirm('是否确认退出登录？', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',

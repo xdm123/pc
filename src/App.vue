@@ -43,7 +43,7 @@
               placement="top-start"
               title=""
               width="auto"
-              trigger="hover"
+              trigger="click"
               content="">
               <div class='usercard'>
                 <img class='headimg' :src="getuserobj.headimg" alt="">

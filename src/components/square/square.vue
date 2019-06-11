@@ -2,13 +2,17 @@
   <div class='square_wrap'>
     <ul>
       <li v-for="(item , index) in feeldata" :key='index'>
-        <el-card class="box-card">
+        <el-card shadow="hover" class="box-card">
           <p class='list_head'>
             <img :src="item.headimg" alt="">
             <span>{{item.name}}</span>
           </p>
           <p class='item_inner'>{{item.feeltext}}</p>
-          <p class='item_time'>{{item.posttime}}</p>
+          <p class='item_time'>
+            {{item.posttime}}
+            <span class='lightnum'>0</span>
+            <span class='lightstar'></span>
+          </p>
         </el-card>
       </li>
     </ul>
@@ -17,7 +21,7 @@
     v-if="islogin"
     class='postfeel' 
     type="primary">发布一条</el-button>
-    <el-card v-if="postboxshow" class="box-card postcard">
+    <el-card  v-if="postboxshow" class="box-card postcard">
       <el-input 
       type="textarea" 
       class='inputarea'
@@ -112,7 +116,7 @@ export default {
         var m = time.getMonth() + 1
         var d = time.getDate()
         var h = time.getHours()
-        var min = time.getMinutes()
+        var min = time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes()
         console.log(y,m,d,h,min)
         var posttime = y + '-' + m + '-' + d + ' ' + h + ':' + min
         console.log(posttime)
@@ -212,10 +216,29 @@ export default {
     }
   }
   .item_inner{
-    padding:20px 0;
+    padding:20px 40px;
   }
   .item_time{
     width: 100%;
     text-align: right;
+    height: 40px;
+    line-height:60px;
+  }
+  .lightstar{
+    display: inline-block;
+    background:url('../../assets/img/star.png') no-repeat center;
+    background-size: 100% 100%;
+    width: 40px;
+    height:40px;
+    float:right;
+    margin-left:20px;
+    margin-right:10px;
+    cursor: pointer;
+  }
+  .lightnum{
+    display: inline-block;
+    height:40px;
+    float:right;
+    margin-right:40px;
   }
 </style>
